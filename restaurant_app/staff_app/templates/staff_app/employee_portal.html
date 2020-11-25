@@ -23,6 +23,12 @@
 
   <h1>WELCOME BACK</h1>
 
+  <form method="GET">{% csrf_token %}
+    <label for="idelete">Brand ID: </label>
+    <input id="idelete" type="text" name="idelete">
+    <input type="submit" value="DELETE ID">
+  </form>
+
   <table class="center" style="background-color:white">
     <tr>
       <th>Order #</th>
