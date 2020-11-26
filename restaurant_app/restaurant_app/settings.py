@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'login_app',
     'customer_app',
     'staff_app',
+    'db_models',
 ]
 
 MIDDLEWARE = [

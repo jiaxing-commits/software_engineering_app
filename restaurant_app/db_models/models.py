@@ -32,14 +32,27 @@ class Customer(models.Model):
         return f'Name: {self.first_name} {self.last_name} ,Customer Id: {str(self.customer_id)}'
 
 class Order_history(models.Model):
+    order_id = models.IntegerField()
     customer_id = models.IntegerField()
     staff_id = models.IntegerField()
     # item_list is a string dictionary that has all items ordered, quanity of each item, and price per item
     item_list = models.CharField(max_length=500)
     total_price = models.PositiveIntegerField(default=0)
+    order_status = models.CharField(choices=[('Fulfilled','Fulfilled'), ('Deleted','Deleted')], max_length=30)
 
     def __str__(self):
         return f'Customer Id: {str(self.customer_id)} ,Item_list: {self.item_list}'
+
+class Current_Orders(models.Model):
+    order_id = models.AutoField(primary_key=True)
+    customer_id = models.IntegerField()
+    # item_list is a string dictionary that has all items ordered, quanity of each item, and price per item
+    item_list = models.CharField(max_length=500)
+    total_price = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f'Order Id: {str(self.order_id)} ,Item_list: {self.item_list}'
+
 
 class Menu(models.Model):
     item_id = models.AutoField(primary_key=True)
