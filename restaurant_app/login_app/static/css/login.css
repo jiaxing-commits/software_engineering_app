@@ -95,6 +95,9 @@ body {
   background: -o-linear-gradient(right, #76b852, #8DC26F);
   background: linear-gradient(to left, #76b852, #8DC26F);
   background-image: url("../img/login_background.jpeg");
+  background-position: auto 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
