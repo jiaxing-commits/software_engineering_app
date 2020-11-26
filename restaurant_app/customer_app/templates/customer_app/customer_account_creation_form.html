@@ -25,52 +25,93 @@
   </div>
 
   <h1>Account Creation</h1>
-
-  <table style="background-color:white" class="center">
+  <form method="POST"> {% csrf_token %}
+    <table style="background-color:white" class="center">
     <tr>
-      <td>Name:</td>
-      <td>`Enter Name`</td>
+      <td>First Name:</td>
+      <td>
+        <input id="first_name" type="text" name="first_name" placeholder="First Name">
+      </td>
     </tr>
     <tr>
-      <td>Address:</td>
-      <td>`Enter Address`</td>
+      <td>Last Name:</td>
+      <td>
+          <input id="last_name" type="text" name="last_name" placeholder="Last Name">
+      </td>
+    </tr>
+    <tr>
+      <td>Street:</td>
+      <td>        
+        <input id="street" type="text" name="street" placeholder="Street Name">
+      </td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td>        
+        <input id="city" type="text" name="city" placeholder="City Name">
+      </td>
+    </tr>  
+    <tr>
+      <td>State:</td>
+      <td>        
+        <input id="state" type="text" name="state" placeholder="State Name">
+      </td>
+    </tr>
+    <tr>
+      <td>Postal Code:</td>
+      <td>        
+        <input id="postal_code" type="text" name="postal_code" placeholder="Postal Code">
+      </td>
     </tr>
     <tr>
       <td>Email:</td>
-      <td>`Enter Email`</td>
+      <td>
+        <input id="email" type="text" name="email" placeholder="Email">
+      </td>
     </tr>    
     <tr>
       <td>Phone:</td>
-      <td>`Enter Phone`</td>
+      <td>
+        <input id="phone" type="text" name="phone" placeholder="Phone">
+      </td>
     </tr>
     <tr>
-      <td>Card Type:</td>
-      <td>`Enter Card Type`</td>
+      <td>Name on Card:</td>
+      <td>
+        <input id="name_on_card" type="text" name="name_on_card" placeholder="Name on Card">
+      </td>    
     </tr>
     <tr>
       <td>Card Number:</td>
-      <td>`Enter Card Number`</td>
+      <td>
+        <input id="credit_card_number" type="text" name="credit_card_number" placeholder="Card Number">
+      </td>
     </tr>
     <tr>
-      <td>Security Code:</td>
-      <td>`Enter Code`</td>
+      <td>Card CVV:</td>
+      <td>
+        <input id="cvv_number" type="text" name="cvv_number" placeholder="Card CVV">
+      </td>
     </tr>
-  </table>
+    </table>
+
+    <br>
+    <br>
+    <table class="center" style="background-color:white">
+      <tr>
+        <td>
+          <button type="submit">Submit</button>
+        </td>
+      </tr>
+    </table>
+  </form> <!--END OF FORM-->
 
   <br>
   <br>
-  <table class="center" style="background-color:white">
-    <tr>
-      <td>SUBMIT</td>
-    </tr>
-  </table>
 
-  <br>
-  <br>
-
-<footer class="w3-center w3-red w3-padding w3-xxlarge">
-  <p>We Have The Best Chefs In the World!</p>
-</footer>
+  <footer class="w3-center w3-red w3-padding w3-xxlarge">
+    <p>We Have The Best Chefs In the World!</p>
+  </footer>
 
 </body>
 </html>
