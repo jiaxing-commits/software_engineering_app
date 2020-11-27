@@ -1,5 +1,4 @@
 from django.db import models
-from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
@@ -12,7 +11,7 @@ class Customer(models.Model):
     city = models.CharField(max_length=35)
     state = models.CharField(max_length=35)
     postal_code = models.CharField(max_length=5) #check
-    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    phone = models.CharField(max_length=10) #check
     email = models.EmailField(max_length=320, unique=True)
     password = models.CharField(max_length=50)
 
