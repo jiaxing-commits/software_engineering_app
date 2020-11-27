@@ -24,87 +24,38 @@
     </div>
   </div>
 
-  <h1>Account Creation</h1>
+  <h1 style="text-align: center;">Account Creation</h1>
   <form method="POST"> {% csrf_token %}
     <table style="background-color:white" class="center">
-    <tr>
-      <td>First Name:</td>
-      <td>
-        <input id="first_name" type="text" name="first_name" placeholder="First Name">
-      </td>
-    </tr>
-    <tr>
-      <td>Last Name:</td>
-      <td>
-          <input id="last_name" type="text" name="last_name" placeholder="Last Name">
-      </td>
-    </tr>
-    <tr>
-      <td>Street:</td>
-      <td>        
-        <input id="street" type="text" name="street" placeholder="Street Name">
-      </td>
-    </tr>
-    <tr>
-      <td>City:</td>
-      <td>        
-        <input id="city" type="text" name="city" placeholder="City Name">
-      </td>
-    </tr>  
-    <tr>
-      <td>State:</td>
-      <td>        
-        <input id="state" type="text" name="state" placeholder="State Name">
-      </td>
-    </tr>
-    <tr>
-      <td>Postal Code:</td>
-      <td>        
-        <input id="postal_code" type="text" name="postal_code" placeholder="Postal Code">
-      </td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td>
-        <input id="email" type="text" name="email" placeholder="Email">
-      </td>
-    </tr>    
-    <tr>
-      <td>Phone:</td>
-      <td>
-        <input id="phone" type="text" name="phone" placeholder="Phone">
-      </td>
-    </tr>
-    <tr>
-      <td>Name on Card:</td>
-      <td>
-        <input id="name_on_card" type="text" name="name_on_card" placeholder="Name on Card">
-      </td>    
-    </tr>
-    <tr>
-      <td>Card Number:</td>
-      <td>
-        <input id="credit_card_number" type="text" name="credit_card_number" placeholder="Card Number">
-      </td>
-    </tr>
-    <tr>
-      <td>Card CVV:</td>
-      <td>
-        <input id="cvv_number" type="text" name="cvv_number" placeholder="Card CVV">
-      </td>
-    </tr>
+    <tr><th><label for="id_first_name">First name:</label></th><td><input type="text" name="first_name" maxlength="26" required id="id_first_name"></td></tr>
+    <tr><th><label for="id_last_name">Last name:</label></th><td><input type="text" name="last_name" maxlength="26" required id="id_last_name"></td></tr>
+    <tr><th><label for="id_street">Street:</label></th><td><input type="text" name="street" maxlength="35" required id="id_street"></td></tr>
+    <tr><th><label for="id_city">City:</label></th><td><input type="text" name="city" maxlength="35" required id="id_city"></td></tr>
+    <tr><th><label for="id_state">State:</label></th><td><input type="text" name="state" maxlength="35" required id="id_state"></td></tr>
+    <tr><th><label for="id_postal_code">Postal code:</label></th><td><input type="text" name="postal_code" maxlength="5" required id="id_postal_code"></td></tr>
+    <tr><th><label for="id_phone">Phone:</label></th><td><input type="tel" name="phone" maxlength="10" required id="id_phone"></td></tr>
+    <tr><th><label for="id_email">Email:</label></th><td><input type="email" name="email" maxlength="320" required id="id_email"></td></tr>
+    <tr><th><label for="id_password">Password:</label></th><td><input type="password" name="password" maxlength="50" required id="id_password"></td></tr>
+    <tr><th><label>Re-Enter Password:</label></th><td><input type="password" name="re_enter_password" maxlength="50" required id="re_enter_password"></td></tr>
+    <tr><th><label for="id_name_on_card">Name on card:</label></th><td><input type="text" name="name_on_card" maxlength="30" required id="id_name_on_card"></td></tr>
+    <tr><th><label for="id_credit_card_number">Credit card number:</label></th><td><input type="text" name="credit_card_number" maxlength="16" required id="id_credit_card_number"></td></tr>
+    <tr><th><label for="id_cvv_number">Cvv number:</label></th><td><input type="text" name="cvv_number" maxlength="3" required id="id_cvv_number"></td></tr>
+    <tr><th><label for="id_billing_street">Billing street:</label></th><td><input type="text" name="billing_street" maxlength="35" required id="id_billing_street"></td></tr>
+    <tr><th><label for="id_billing_city">Billing city:</label></th><td><input type="text" name="billing_city" maxlength="35" required id="id_billing_city"></td></tr>
+    <tr><th><label for="id_billing_state">Billing state:</label></th><td><input type="text" name="billing_state" maxlength="35" required id="id_billing_state"></td></tr>
+    <tr><th><label for="id_billing_postal_code">Billing postal code:</label></th><td><input type="text" name="billing_postal_code" maxlength="5" required id="id_billing_postal_code"></td></tr>
     </table>
 
     <br>
     <br>
     <table class="center" style="background-color:white">
       <tr>
-        <td>
+        <th>
           <button type="submit">Submit</button>
-        </td>
+        </th>
       </tr>
     </table>
-  </form> <!--END OF FORM-->
+  </form> 
 
   <br>
   <br>

@@ -1,11 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from db_models.models import Customer
+from db_models.forms import CustomerForm
+
+user = ''
 
 def default_home(request):
-    return render(request, 'customer_app/default_home.html')
+    if request.session['Logged_Status'] != 'LOGGED':
+        return render(request, 'customer_app/default_home.html')
+    else:
+        return redirect('../logged')
 
 def logged_home(request):
-    return render(request, 'customer_app/logged_home.html')
+    if request.session['Logged_Status'] != 'LOGGED':
+        return redirect('../login')
+    else:
+        if 'User' in request.session:
+            user = request.session['User']
+        return render(request, 'customer_app/logged_home.html')
 
 def menu(request):
     return render(request, 'customer_app/menu.html')
@@ -15,19 +26,15 @@ def checkout(request):
 
 def customer_account_creation_form(request):
     if request.method == 'POST':
-        c = Customer(first_name = request.GET['first_name'], 
-        last_name = request.GET['last_name'],
-        street = request.GET['street'], 
-        city = request.GET['city'], 
-        state = request.GET['state'], 
-        postal_code = request.GET['postal_code'], 
-        email = request.GET['email'], 
-        phone = request.GET['phone'], 
-        name_on_card = request.GET['name_on_card'], 
-        credit_card_number = request.GET['credit_card_number'], 
-        cvv_number = request.GET['cvv_number'])
-        )
+        customer_form = CustomerForm(request.POST)
+        c = Customer(email='aushd2hiau@gmail.com', phone='1277773',password='asdasd')
         c.save()
-
-        #print(request.GET.get('first_name'))
-    return render(request, 'customer_app/customer_account_creation_form.html')
+        if customer_form.is_valid():
+            c = Customer(email='aushd2hiau@gmail.com', phone='123',password='asdasd')
+            c.save()
+            # customer_form = customer_form.save(commit=True)
+            # customer_form.save()
+    customer_form = CustomerForm()
+    print(customer_form)
+    context = {'customer_form': customer_form}
+    return render(request, 'customer_app/customer_account_creation_form.html', context)
