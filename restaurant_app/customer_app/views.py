@@ -27,14 +27,11 @@ def checkout(request):
 def customer_account_creation_form(request):
     if request.method == 'POST':
         customer_form = CustomerForm(request.POST)
-        c = Customer(email='aushd2hiau@gmail.com', phone='1277773',password='asdasd')
-        c.save()
         if customer_form.is_valid():
-            c = Customer(email='aushd2hiau@gmail.com', phone='123',password='asdasd')
-            c.save()
-            # customer_form = customer_form.save(commit=True)
-            # customer_form.save()
+            customer_form.save()
+            
+        else:
+            print(customer_form.errors)
     customer_form = CustomerForm()
-    print(customer_form)
     context = {'customer_form': customer_form}
     return render(request, 'customer_app/customer_account_creation_form.html', context)

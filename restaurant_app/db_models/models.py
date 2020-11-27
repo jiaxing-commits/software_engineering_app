@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinLengthValidator
 
 # Create your models here.
 
@@ -10,25 +11,25 @@ class Customer(models.Model):
     street = models.CharField(max_length=35)
     city = models.CharField(max_length=35)
     state = models.CharField(max_length=35)
-    postal_code = models.CharField(max_length=5) #check
-    phone = models.CharField(max_length=10) #check
+    postal_code = models.CharField(validators=[MinLengthValidator(5)] ,max_length=5) #check
+    phone = models.CharField(validators=[MinLengthValidator(10)], max_length=10) #check
     email = models.EmailField(max_length=320, unique=True)
-    password = models.CharField(max_length=50)
+    password = models.CharField(validators=[MinLengthValidator(8)], max_length=50)
 
     #Card Information
     name_on_card = models.CharField(max_length=30)
-    credit_card_number = models.CharField(max_length=16, unique=True) #check
-    cvv_number = models.CharField(max_length=3) #check
+    credit_card_number = models.CharField(validators=[MinLengthValidator(16)] , max_length=16, unique=True) #check
+    cvv_number = models.CharField(validators=[MinLengthValidator(3)] ,max_length=3) #check
     billing_street = models.CharField(max_length=35)
     billing_city = models.CharField(max_length=35)
     billing_state = models.CharField(max_length=35)
-    billing_postal_code = models.CharField(max_length=5) #check
+    billing_postal_code = models.CharField(validators=[MinLengthValidator(5)], max_length=5) #check
 
     #Point System
     total_points = models.PositiveIntegerField(default=0)
 
     #Orders
-    order_status = models.CharField(choices=[('In Progress','In Progress'), ('Request to Cancel','Request to Cancel'), ('Nothing to Order','Nothing to Order')], max_length=50)
+    order_status = models.CharField(choices=[('In Progress','In Progress'), ('Request to Cancel','Request to Cancel'), ('Nothing to Order','Nothing to Order')], max_length=50, default='Nothing to Order')
 
     def __str__(self):
         return f'Name: {self.first_name} {self.last_name} ,Customer Id: {str(self.customer_id)}'
