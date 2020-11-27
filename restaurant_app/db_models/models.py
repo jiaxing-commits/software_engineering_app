@@ -28,6 +28,9 @@ class Customer(models.Model):
     #Point System
     total_points = models.PositiveIntegerField(default=0)
 
+    #Orders
+    order_status = models.CharField(choices=[('In Progress','In Progress'), ('Request to Cancel','Request to Cancel'), ('Nothing to Order','Nothing to Order')], max_length=50)
+
     def __str__(self):
         return f'Name: {self.first_name} {self.last_name} ,Customer Id: {str(self.customer_id)}'
 
