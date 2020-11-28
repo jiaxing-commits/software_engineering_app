@@ -1,0 +1,49 @@
+body, html {height: 100%}
+body, h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+.w3-top, td{
+  font-family: "Times New Roman", Georgia, Serif;
+}
+.menu {display: none}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 90%;
+}
+
+body{
+    background-color: rgb(39, 72, 77);
+} 
+h1{
+  padding: 1em;
+  font-size: 50px;
+  color: azure;
+}
+
+th{
+  font-size: 50px;
+}
+td{
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: red;
+ }
+ 
+ ::-ms-input-placeholder { /* Microsoft Edge */
+  color: red;
+ }

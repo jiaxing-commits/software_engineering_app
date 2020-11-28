@@ -7,4 +7,5 @@ urlpatterns = [
     path('menu', views.menu, name='menu'),
     path('checkout', views.checkout, name='checkout'),
     path('customer_account_creation_form', views.customer_account_creation_form, name='customer_account_creation_form'),
+    path('order_history', views.order_history, name='order_history'),
 ]

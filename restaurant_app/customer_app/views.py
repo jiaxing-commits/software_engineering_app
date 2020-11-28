@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from db_models.models import Customer
+from db_models.models import Current_Orders, Customer, Order_history, Staff
 from db_models.forms import CustomerForm
 from collections import defaultdict
 
@@ -45,3 +45,20 @@ def customer_account_creation_form(request):
     customer_form = CustomerForm()
     context = {'customer_form': customer_form, 'email_valid': True, 'password_valid': True}
     return render(request, 'customer_app/customer_account_creation_form.html', context)
+
+def order_history(request):
+    if request.session['Logged_Status'] != 'LOGGED':
+        return redirect('login')
+    else:
+        if 'User' in request.session:
+            user = request.session['User']  
+        total_orders = Order_history.objects.all()
+        current_user = []
+        for i in total_orders: 
+            customer = Customer.objects.get(customer_id = i.customer_id) 
+            current_user.append(customer.customer_id)
+        total_orders = [[x,y] for (x,y) in zip(total_orders, current_user)]
+        context = { 'total_orders': total_orders }
+
+
+        return render(request, 'customer_app/order_history.html', context)

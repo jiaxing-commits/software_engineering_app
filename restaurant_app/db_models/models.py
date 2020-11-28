@@ -48,7 +48,7 @@ class Order_history(models.Model):
     item_list = models.CharField(max_length=500)
     total_price = models.PositiveIntegerField(default=0)
     order_status = models.CharField(choices=[('Fulfilled','Fulfilled'), ('Deleted','Deleted')], max_length=30)
-
+    #order1 = Order_history(order_id = 1, customer_id = 1, staff_id = 1, item_list = "Ravioli", total_price = 14.50, order_status = "Fulfilled")
     def __str__(self):
         return f'Customer Id: {str(self.customer_id)}, Item_list: {self.item_list}'
 
@@ -58,6 +58,8 @@ class Current_Orders(models.Model):
     # item_list is a string dictionary that has all items ordered, quanity of each item, and price per item
     item_list = models.CharField(max_length=500)
     total_price = models.PositiveIntegerField(default=0)
+
+    #order1 = Current_Orders(order_id = 1, customer_id = 1, item_list = "Ravioli", total_price = 14.50)
 
     def __str__(self):
         return f'Order Id: {str(self.order_id)}, Customer Id: {str(self.customer_id)}, Item_list: {self.item_list}'
