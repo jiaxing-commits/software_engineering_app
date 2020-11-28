@@ -26,10 +26,20 @@ def checkout(request):
 
 def customer_account_creation_form(request):
     if request.method == 'POST':
-        print(request.POST['postal_code'])
-        # customer_form = CustomerForm(request.POST)
-        # if customer_form.is_valid():
-            # customer_form.save()
+        customer_form = CustomerForm(request.POST)
+        if customer_form.is_valid():
+            #check if 2nd password is correct
+        
+            if request.POST['password'] == request.POST['re_enter_password']:
+                customer_form.save()
+                return redirect('..')
+            else:
+                context = {'customer_form': customer_form, 'email_valid': True, 'password_valid': False}
+            return render(request, 'customer_app/customer_account_creation_form.html', context)
+        else: 
+            if Customer.objects.filter(email=request.POST['email']).exists():
+                context = {'customer_form': customer_form, 'email_valid': False, 'password_valid': True}
+            return render(request, 'customer_app/customer_account_creation_form.html', context)
     customer_form = CustomerForm()
-    context = {'customer_form': customer_form}
+    context = {'customer_form': customer_form, 'email_valid': True, 'password_valid': True}
     return render(request, 'customer_app/customer_account_creation_form.html', context)

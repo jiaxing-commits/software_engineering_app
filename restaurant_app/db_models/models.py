@@ -17,19 +17,19 @@ class Customer(models.Model):
     street = models.CharField(max_length=35)
     city = models.CharField(max_length=35)
     state = models.CharField(max_length=35)
-    postal_code = models.CharField(validators=[MinLengthValidator(5),only_numbers] ,max_length=5) #check
-    phone = models.CharField(validators=[MinLengthValidator(10), only_numbers], max_length=10) #check
+    postal_code = models.CharField(validators=[MinLengthValidator(5),only_numbers] ,max_length=5) 
+    phone = models.CharField(validators=[MinLengthValidator(10), only_numbers], max_length=10) 
     email = models.EmailField(max_length=320, unique=True)
     password = models.CharField(validators=[MinLengthValidator(8)], max_length=50)
 
     #Card Information
     name_on_card = models.CharField(max_length=30)
-    credit_card_number = models.CharField(validators=[MinLengthValidator(16), only_numbers] , max_length=16, unique=True) #check
-    cvv_number = models.CharField(validators=[MinLengthValidator(3), only_numbers] ,max_length=3) #check
+    credit_card_number = models.CharField(validators=[MinLengthValidator(16), only_numbers] , max_length=16)
+    cvv_number = models.CharField(validators=[MinLengthValidator(3), only_numbers] ,max_length=3) 
     billing_street = models.CharField(max_length=35)
     billing_city = models.CharField(max_length=35)
     billing_state = models.CharField(max_length=35)
-    billing_postal_code = models.CharField(validators=[MinLengthValidator(5), only_numbers], max_length=5) #check
+    billing_postal_code = models.CharField(validators=[MinLengthValidator(5), only_numbers], max_length=5)
 
     #Point System
     total_points = models.PositiveIntegerField(default=0)
