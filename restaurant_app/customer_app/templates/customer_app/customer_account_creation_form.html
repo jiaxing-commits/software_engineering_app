@@ -32,18 +32,18 @@
     <tr><th><label for="id_street">Street:</label></th><td><input type="text" name="street" maxlength="35" required id="id_street"></td></tr>
     <tr><th><label for="id_city">City:</label></th><td><input type="text" name="city" maxlength="35" required id="id_city"></td></tr>
     <tr><th><label for="id_state">State:</label></th><td><input type="text" name="state" maxlength="35" required id="id_state"></td></tr>
-    <tr><th><label for="id_postal_code">Postal code:</label></th><td><input type="text" name="postal_code" minlength="5" maxlength="5" required id="id_postal_code"></td></tr>
-    <tr><th><label for="id_phone">Phone:</label></th><td><input type="tel" name="phone" minlength="10" maxlength="10" required id="id_phone"></td></tr>
+    <tr><th><label for="id_postal_code">Postal code:</label></th><td><input type="text" name="postal_code" pattern="^[0-9]*$" minlength="5" maxlength="5" required id="id_postal_code"></td></tr>
+    <tr><th><label for="id_phone">Phone:</label></th><td><input type="tel" name="phone" pattern="^[0-9]*$" minlength="10" maxlength="10" required id="id_phone"></td></tr>
     <tr><th><label for="id_email">Email:</label></th><td><input type="email" name="email" maxlength="320" required id="id_email"></td></tr>
     <tr><th><label for="id_password">Password:</label></th><td><input type="password" name="password" minlength="8" maxlength="50" required id="id_password"></td></tr>
     <tr><th><label>Re-Enter Password:</label></th><td><input type="password" name="re_enter_password" minlength="8" maxlength="50" required id="re_enter_password"></td></tr>
     <tr><th><label for="id_name_on_card">Name on card:</label></th><td><input type="text" name="name_on_card" maxlength="30" required id="id_name_on_card"></td></tr>
-    <tr><th><label for="id_credit_card_number">Credit card number:</label></th><td><input type="text" name="credit_card_number" minlength="16" maxlength="16" required id="id_credit_card_number"></td></tr>
-    <tr><th><label for="id_cvv_number">Cvv number:</label></th><td><input type="text" name="cvv_number" minlength="3" maxlength="3" required id="id_cvv_number"></td></tr>
+    <tr><th><label for="id_credit_card_number">Credit card number:</label></th><td><input type="text" name="credit_card_number" pattern="^[0-9]*$" minlength="16" maxlength="16" required id="id_credit_card_number"></td></tr>
+    <tr><th><label for="id_cvv_number">Cvv number:</label></th><td><input type="text" name="cvv_number" pattern="^[0-9]*$" minlength="3" maxlength="3" required id="id_cvv_number"></td></tr>
     <tr><th><label for="id_billing_street">Billing street:</label></th><td><input type="text" name="billing_street" maxlength="35" required id="id_billing_street"></td></tr>
     <tr><th><label for="id_billing_city">Billing city:</label></th><td><input type="text" name="billing_city" maxlength="35" required id="id_billing_city"></td></tr>
     <tr><th><label for="id_billing_state">Billing state:</label></th><td><input type="text" name="billing_state" maxlength="35" required id="id_billing_state"></td></tr>
-    <tr><th><label for="id_billing_postal_code">Billing postal code:</label></th><td><input type="text" name="billing_postal_code" minlength="5" maxlength="5" required id="id_billing_postal_code"></td></tr>
+    <tr><th><label for="id_billing_postal_code">Billing postal code:</label></th><td><input type="text" name="billing_postal_code" pattern="^[0-9]*$" minlength="5" maxlength="5" required id="id_billing_postal_code"></td></tr>
     </table>
 
     <br>

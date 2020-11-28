@@ -26,12 +26,10 @@ def checkout(request):
 
 def customer_account_creation_form(request):
     if request.method == 'POST':
-        customer_form = CustomerForm(request.POST)
-        if customer_form.is_valid():
-            customer_form.save()
-            
-        else:
-            print(customer_form.errors)
+        print(request.POST['postal_code'])
+        # customer_form = CustomerForm(request.POST)
+        # if customer_form.is_valid():
+            # customer_form.save()
     customer_form = CustomerForm()
     context = {'customer_form': customer_form}
     return render(request, 'customer_app/customer_account_creation_form.html', context)
