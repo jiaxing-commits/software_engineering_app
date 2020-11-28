@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from db_models.models import Customer
 from db_models.forms import CustomerForm
+from collections import defaultdict
 
-user = ''
+user = 'guest'
+cart = defaultdict()
 
 def default_home(request):
     if request.session['Logged_Status'] != 'LOGGED':
