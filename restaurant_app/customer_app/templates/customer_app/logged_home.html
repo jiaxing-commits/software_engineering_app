@@ -15,7 +15,7 @@
       <a href="#about" class="w3-bar-item w3-button">About</a>
       <a href="../menu" class="w3-bar-item w3-button">Menu</a>
       <a href="../order_history" class="w3-bar-item w3-button">Order History</a>
-      <a class="w3-bar-item w3-button">Points: insert number</a>
+      <a class="w3-bar-item w3-button">Points: number</a>
       <a href="../checkout" class="w3-bar-item w3-button">Checkout</a>
       <a href="../logout" class="w3-bar-item w3-button">Logout</a>
   
@@ -30,14 +30,41 @@
   </div>
 </header>
 
-<div class="w3-content" style="max-width:1100px">
+      <div id="main" class="w3-bar-item w3-button">	
+        <button class="openbtn" onclick="openNav()">☰ CART</button>  
+      </div>
+      <!--SIDEBAR-->
 
+      <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+      }
+      </script>
+
+      <!--SIDEBAR END-->
+
+<div class="w3-content" style="max-width:1100px">
   <div class="w3-row w3-padding-64" id="about">
     <div class="w3-col m6 w3-padding-large w3-hide-small">
      <img src="{%static 'img/tablesetting2.jpg' %}" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
     </div>
 
     <div class="w3-col m6 w3-padding-large">
+    
       <h1 class="w3-center">About Best Restaurant App </h1><br>
       <h5 class="w3-center">Tradition since 1889</h5>
       <p class="w3-large">The Catering was founded in blabla by Mr. Smith in lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
