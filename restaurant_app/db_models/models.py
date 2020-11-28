@@ -35,10 +35,10 @@ class Customer(models.Model):
     total_points = models.PositiveIntegerField(default=0)
 
     #Orders
-    order_status = models.CharField(choices=[('In Progress','In Progress'), ('Request to Cancel','Request to Cancel'), ('Nothing to Order','Nothing to Order')], max_length=50, default='Nothing to Order')
+    customer_request_status = models.CharField(choices=[('In Progress','In Progress'), ('Request to Cancel','Request to Cancel'), ('Nothing to Order','Nothing to Order')], max_length=50, default='Nothing to Order')
 
     def __str__(self):
-        return f'Name: {self.first_name} {self.last_name} ,Customer Id: {str(self.customer_id)}'
+        return f'Name: {self.first_name} {self.last_name}, Customer Id: {str(self.customer_id)}'
 
 class Order_history(models.Model):
     order_id = models.IntegerField()
@@ -50,7 +50,7 @@ class Order_history(models.Model):
     order_status = models.CharField(choices=[('Fulfilled','Fulfilled'), ('Deleted','Deleted')], max_length=30)
 
     def __str__(self):
-        return f'Customer Id: {str(self.customer_id)} ,Item_list: {self.item_list}'
+        return f'Customer Id: {str(self.customer_id)}, Item_list: {self.item_list}'
 
 class Current_Orders(models.Model):
     order_id = models.AutoField(primary_key=True)
@@ -60,7 +60,7 @@ class Current_Orders(models.Model):
     total_price = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f'Order Id: {str(self.order_id)} ,Item_list: {self.item_list}'
+        return f'Order Id: {str(self.order_id)}, Customer Id: {str(self.customer_id)}, Item_list: {self.item_list}'
 
 
 class Menu(models.Model):
@@ -69,7 +69,7 @@ class Menu(models.Model):
     price = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f'Item: {self.item_name} ,Item Id: {str(self.item_id)}'
+        return f'Item: {self.item_name}, Item Id: {str(self.item_id)}'
 
 class Credit_card(models.Model):
     credit_card_number = models.CharField(max_length=16, unique=True)
@@ -82,7 +82,7 @@ class Credit_card(models.Model):
     billing_postal_code = models.CharField(max_length=5) 
 
     def __str__(self):
-        return f'Number: {self.credit_card_number} ,Name: {self.payment_name}'
+        return f'Number: {self.credit_card_number}, Name: {self.payment_name}'
 
 class Staff(models.Model):
     staff_id = models.AutoField(primary_key=True)
@@ -97,4 +97,4 @@ class Staff(models.Model):
     role = models.CharField(max_length=35)
 
     def __str__(self):
-        return f'Name: {self.first_name} {self.last_name} ,Staff Id: {str(self.staff_id)}'
+        return f'Name: {self.first_name} {self.last_name}, Staff Id: {str(self.staff_id)}'

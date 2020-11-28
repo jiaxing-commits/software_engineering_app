@@ -26,7 +26,7 @@
   <table class="center" style="background-color:white">
     <tr>
       <th>Order ID</th>
-      <th>Customer ID</th> 
+      <th>Customer ID</th>
       <th>Item List</th>
       <th>Order Status</th>
       <th>Total Price</th>
@@ -34,97 +34,21 @@
       <th>Fulfill</th>
 
     </tr>
-    <tr>
-      <td>1</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
 
-    </tr>
-    <tr>
-      <td>2</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>    
-    <tr>
-      <td>4</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-      <tr>
-      <td>5</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><button type="button">Delete</button></td>
-      <td><button type="button">Fulfill</button></td>
-    
+    <form method="POST">{% csrf_token %}
+      {% for o in total_orders %}
+        <tr>
+          <td> {{o.0.order_id}} </td>
+          <td> {{o.0.customer_id}} </td>
+          <td> {{o.0.item_list}} </td>
+          <td> {{o.1}} </td>
+          <td> {{o.0.total_price}} </td>
+          <td><button type="submit" name="delete" value={{o.0.order_id}}>Delete</button></td>
+          <td><button type="submit" name="fulfill" value={{o.0.order_id}}>Fulfill</button></td>
+        </tr>
+      {% endfor %}
+    </form>
+
   </table>
 
   <br>

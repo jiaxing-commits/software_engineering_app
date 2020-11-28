@@ -10,11 +10,11 @@ def default_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
         return render(request, 'customer_app/default_home.html')
     else:
-        return redirect('../logged')
+        return redirect('logged')
 
 def logged_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
-        return redirect('../login')
+        return redirect('login')
     else:
         if 'User' in request.session:
             user = request.session['User']
