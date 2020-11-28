@@ -13,7 +13,7 @@ def default_home(request):
         return redirect('../logged')
 
 def logged_home(request):
-    if request.session['Logged_Status'] != 'LOGGED':
+    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
         return redirect('../login')
     else:
         if 'User' in request.session:
