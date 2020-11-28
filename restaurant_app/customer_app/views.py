@@ -7,7 +7,7 @@ user = 'guest'
 cart = defaultdict()
 
 def default_home(request):
-    if request.session['Logged_Status'] != 'LOGGED':
+    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
         return render(request, 'customer_app/default_home.html')
     else:
         return redirect('../logged')
