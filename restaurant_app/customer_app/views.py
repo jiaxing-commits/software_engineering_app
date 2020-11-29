@@ -42,8 +42,6 @@ def checkout(request):
     total_price = 0
     total_quanity = 0
 
-    print(user)
-
     if request.method == 'POST':
         if request.POST.get('Confirm Payment'):
             item_list = {}
@@ -67,13 +65,25 @@ def checkout(request):
                 c = Current_Orders(customer_id=-1, item_list = item_list, total_price=total_price)
                 c.save()
                 return redirect(default_home)
-    total_price = 0
-    total_quanity = 0
+        
+        if request.POST.get('Use Points'):
+            customer = Customer.objects.get(email=user)
+            points_to_money = 0
+
+            if customer.total_points >= 100:
+                points_to_money = customer.total_points // 100
+                customer.total_points = customer.total_points % 100 
+                customer.save()
+                total_price -= points_to_money
+
     for x, y in cart.items():
         total_price += y[1]
         total_quanity += int(y[0])
+    
+    if user:
+        cur_points = Customer.objects.get(email=user).total_points
 
-    context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user}
+    context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'cur_points': cur_points}
     return render(request, 'customer_app/checkout.html', context)
 
 def customer_account_creation_form(request):
