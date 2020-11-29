@@ -61,12 +61,12 @@ def checkout(request):
 
                 c = Current_Orders(customer_id=customer.customer_id, item_list = item_list, total_price=total_price)
                 c.save()
-                # cart = defaultdict()
+                cart.clear()
                 return redirect(logged_home)
             elif len(cart) != 0:
                 c = Current_Orders(customer_id=-1, item_list = item_list, total_price=total_price)
                 c.save()
-                # cart = defaultdict()
+                cart.clear()
                 return redirect(default_home)
         
         if request.POST.get('Use Points'):
