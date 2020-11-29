@@ -83,8 +83,9 @@ def checkout(request):
     
     if user:
         cur_points = Customer.objects.get(email=user).total_points
-
-    context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'cur_points': cur_points}
+        context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'cur_points': cur_points}
+    else:
+        context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user}
     return render(request, 'customer_app/checkout.html', context)
 
 def customer_account_creation_form(request):
