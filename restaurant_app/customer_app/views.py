@@ -40,10 +40,6 @@ def menu(request):
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
-    if 'cart' in request.session:
-        cart = json.load(request.session['cart'])
-    else:
-        cart = defaultdict()
     user = request.session['User'] if 'User' in request.session else None
     total_price = 0
     total_quanity = 0
@@ -66,12 +62,12 @@ def checkout(request):
 
                 c = Current_Orders(customer_id=customer.customer_id, item_list = item_list, total_price=total_price)
                 c.save()
-                cart = defaultdict()
+                # cart = defaultdict()
                 return redirect(logged_home)
             elif len(cart) != 0:
                 c = Current_Orders(customer_id=-1, item_list = item_list, total_price=total_price)
                 c.save()
-                cart = defaultdict()
+                # cart = defaultdict()
                 return redirect(default_home)
         
         if request.POST.get('Use Points'):
