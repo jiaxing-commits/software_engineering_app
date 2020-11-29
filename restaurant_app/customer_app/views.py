@@ -52,11 +52,13 @@ def checkout(request):
                 total_price += y[1]
             item_list =  json.dumps(item_list)
             
-            if user:
+            acc_points = int(total_price)
+
+            if user and len(cart) != 0:
                 c = Current_Orders(customer_id=Customer.objects.get(email=user).customer_id, item_list = item_list, total_price=total_price)
                 c.save()
                 return redirect(logged_home)
-            else:
+            elif len(cart) != 0:
                 c = Current_Orders(customer_id=-1, item_list = item_list, total_price=total_price)
                 c.save()
                 return redirect(default_home)
