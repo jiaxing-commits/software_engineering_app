@@ -11,7 +11,13 @@ def default_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] == 'LOGGED':
         return redirect(logged_home)
     else:
-        return render(request, 'customer_app/default_home.html')
+        if request.method == 'POST':
+            if request.POST.get('item'):
+                total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
+                cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
+    
+        context2 = {'cart': cart}
+        return render(request, 'customer_app/default_home.html', context2)
 
 def logged_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] == 'LOGGED':
@@ -24,7 +30,14 @@ def logged_home(request):
         user = request.session['User']
         customer = Customer.objects.get(email=user)
         context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'total_points': customer.total_points}
-        return render(request, 'customer_app/logged_home.html', context)
+        if request.method == 'POST':
+            if request.POST.get('item'):
+                total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
+                cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
+    
+        context2 = {'cart': cart}
+
+        return render(request, 'customer_app/logged_home.html', context, context2)
     else:
         return redirect('login')
         
