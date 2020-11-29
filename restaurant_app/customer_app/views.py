@@ -4,32 +4,38 @@ from db_models.forms import CustomerForm
 from collections import defaultdict
 from decimal import Decimal
 
-user = 'guest'
 cart = defaultdict()
 
 def default_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
         return render(request, 'customer_app/default_home.html')
     else:
-        return redirect('logged')
+        return redirect(logged_home)
 
 def logged_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
         return redirect('login')
     else:
-        if 'User' in request.session:
-            user = request.session['User']
         return render(request, 'customer_app/logged_home.html')
 
 def menu(request):
     if request.method == 'POST':
         if request.POST.get('item'):
-            cart[request.POST.get('item')] = [request.POST.get('quanity'), Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price) ]
+            total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
+            cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
+    
     context = {'cart': cart}
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
-    context = {'cart': cart}
+    total_price = 0
+    total_quanity = 0
+    for x, y in cart.items():
+        total_price += y[1]
+        total_quanity += int(y[0])
+        
+    user = request.session['User']
+    context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user}
     return render(request, 'customer_app/checkout.html', context)
 
 def customer_account_creation_form(request):
