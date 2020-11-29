@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from db_models.models import Current_Orders, Customer, Order_history, Staff, Menu
 from db_models.forms import CustomerForm
 from collections import defaultdict
+from decimal import Decimal
 
 user = 'guest'
 cart = defaultdict()
@@ -23,8 +24,7 @@ def logged_home(request):
 def menu(request):
     if request.method == 'POST':
         if request.POST.get('item'):
-            cart[request.POST.get('item')] = [request.POST.get('quanity'), Menu.objects.get(item_name=request.POST.get('item')).price ]
-            # cart[request.POST.get('item')] = [request.POST.get('quanity'), float(request.POST.get('quanity'))*float(Menu.objects.get(item_name=request.POST.get('item')).price) ]
+            cart[request.POST.get('item')] = [request.POST.get('quanity'), Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price) ]
             
 
         request.POST = request.POST.copy()

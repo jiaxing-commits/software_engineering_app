@@ -70,7 +70,7 @@ class Menu(models.Model):
     item_id = models.AutoField(primary_key=True)
     item_name = models.CharField(max_length=320)
     price = models.DecimalField(decimal_places=2, max_digits=6, validators=[MinValueValidator(Decimal('0.01'))])
-
+    
     def __str__(self):
         return f'Item: {self.item_name}, Item Id: {str(self.item_id)}'
 
