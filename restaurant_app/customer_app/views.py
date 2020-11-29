@@ -25,10 +25,7 @@ def menu(request):
     if request.method == 'POST':
         if request.POST.get('item'):
             cart[request.POST.get('item')] = [request.POST.get('quanity'), Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price) ]
-            
-
-        request.POST = request.POST.copy()
-        context = {'cart': cart}
+    context = {'cart': cart}
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
