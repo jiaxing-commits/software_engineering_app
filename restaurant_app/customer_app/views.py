@@ -39,7 +39,7 @@ def menu(request):
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
-    user = request.session['User']
+    user = request.session['User'] if 'User' in request.session else None
     total_price = 0
     total_quanity = 0
 
@@ -111,8 +111,6 @@ def order_history(request):
     if request.session['Logged_Status'] != 'LOGGED':
         return redirect('login')
     else:
-        if 'User' in request.session:
-            user = request.session['User']  
         total_orders = Order_history.objects.all()
         current_user = []
         for i in total_orders: 
