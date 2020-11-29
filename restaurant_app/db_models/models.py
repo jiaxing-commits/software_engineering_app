@@ -71,8 +71,9 @@ class Menu(models.Model):
     item_name = models.CharField(max_length=320)
     price = models.DecimalField(decimal_places=2, max_digits=6, validators=[MinValueValidator(Decimal('0.01'))])
     
+    #menu1 = Menu(item_id=1, item_name="Margherita", price=12.5)
     def __str__(self):
-        return f'Item: {self.item_name}, Item Id: {str(self.item_id)}'
+        return f'Item: {self.item_name}, Item Id: {str(self.item_id)}, Price: {str(self.price)}'
 
 class Credit_card(models.Model):
     credit_card_number = models.CharField(max_length=16, unique=True)
