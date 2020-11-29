@@ -35,11 +35,15 @@ def menu(request):
             total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
             cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
     
+    request.session['cart'] = json.dump(cart)
     context = {'cart': cart}
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
-    cart = cart
+    if 'cart' in request.session:
+        cart = json.load(request.session['cart'])
+    else:
+        cart = defaultdict()
     user = request.session['User'] if 'User' in request.session else None
     total_price = 0
     total_quanity = 0
