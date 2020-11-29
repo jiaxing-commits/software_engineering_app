@@ -23,14 +23,16 @@ def employee_portal(request):
             current_order = Current_Orders.objects.get(order_id = id)
             piece_of_history = Order_history(order_id = current_order.order_id, customer_id = current_order.customer_id, item_list = current_order.item_list, total_price = current_order.total_price, order_status = which, staff_id = Staff.objects.get(email = user).staff_id)
             piece_of_history.save()
-            current_order.delete()
-            print(current_order)            
+            current_order.delete()      
                 
         total_orders = Current_Orders.objects.all()
         request_status = []
         for i in total_orders: 
-            customer = Customer.objects.get(customer_id = i.customer_id) 
-            request_status.append(customer.customer_request_status)
+            if i.customer_id != -1:
+                customer = Customer.objects.get(customer_id = i.customer_id) 
+                request_status.append(customer.customer_request_status)
+            else:
+                request_status.append("In Progress")
         total_orders = [[x,y] for (x,y) in zip(total_orders, request_status)]
         context = { 'total_orders': total_orders }
 

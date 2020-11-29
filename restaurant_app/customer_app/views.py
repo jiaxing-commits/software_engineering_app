@@ -3,6 +3,7 @@ from db_models.models import Current_Orders, Customer, Order_history, Staff, Men
 from db_models.forms import CustomerForm
 from collections import defaultdict
 from decimal import Decimal
+import json
 
 cart = defaultdict()
 
@@ -28,13 +29,35 @@ def menu(request):
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
+    user = request.session['User']
+    total_price = 0
+    total_quanity = 0
+
+    print(user)
+
+    if request.method == 'POST':
+        if request.POST.get('Confirm Payment'):
+            item_list = {}
+            
+            for x,y in cart.items():
+                item_list[x] = int(y[0])
+                total_price += y[1]
+            item_list =  json.dumps(item_list)
+            
+            if user:
+                c = Current_Orders(customer_id=Customer.objects.get(email=user).customer_id, item_list = item_list, total_price=total_price)
+                c.save()
+                return redirect(logged_home)
+            else:
+                c = Current_Orders(customer_id=-1, item_list = item_list, total_price=total_price)
+                c.save()
+                return redirect(default_home)
     total_price = 0
     total_quanity = 0
     for x, y in cart.items():
         total_price += y[1]
         total_quanity += int(y[0])
-        
-    user = request.session['User']
+
     context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user}
     return render(request, 'customer_app/checkout.html', context)
 
@@ -46,7 +69,7 @@ def customer_account_creation_form(request):
         
             if request.POST['password'] == request.POST['re_enter_password']:
                 customer_form.save()
-                return redirect('..')
+                return redirect(default_home)
             else:
                 context = {'customer_form': customer_form, 'email_valid': True, 'password_valid': False}
             return render(request, 'customer_app/customer_account_creation_form.html', context)
