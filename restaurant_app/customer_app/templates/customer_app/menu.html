@@ -61,82 +61,110 @@
         </a>
       </div>
 
-      <form method="POST">{% csrf_token %}
+      
       <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
-        <h1><b>Margherita</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span></h1>
-        <input type="number" min="0" max="500" name="quanity">
+        <form method="POST">{% csrf_token %}
+        <h1><b>Margherita</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$12.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Margherita">Add To Cart</button>
         <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</p>
+        </form>
+        </form>
         <hr>
-    
-        <h1><b>Formaggio</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span></h1>
+        
+        <form method="POST">{% csrf_token %}
+        <h1><b>Formaggio</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$15.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Formaggio">Add To Cart</button>
         <p class="w3-text-grey">Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
+        </form>
         <hr>
         
-        <h1><b>Chicken</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span></h1>
+        <form method="POST">{% csrf_token %}
+        <h1><b>Chicken</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$17.00</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Chicken">Add To Cart</button>
         <p class="w3-text-grey">Fresh tomatoes, mozzarella, chicken, onions</p>
-        <hr>
-
-        <h1><b>Pineapple'o'clock</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$16.50</span></h1>
-        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Pineapple'o'clock">Add To Cart</button>
-        <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
-        <hr>
-
-        <h1><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span><span class="w3-right w3-tag w3-dark-grey w3-round">$20.00</span></h1>
-        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Meat Town">Add To Cart</button>
-        <p class="w3-text-grey">Fresh tomatoes, mozzarella, hot pepporoni, hot sausage, beef, chicken</p>
-        <hr>
-
-        <h1><b>Parma</b> <span class="w3-tag w3-grey w3-round">New</span><span class="w3-right w3-tag w3-dark-grey w3-round">$21.50</span></h1>
-        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Parma">Add To Cart</button>
-        <p class="w3-text-grey">Fresh tomatoes, mozzarella, parma, bacon, fresh arugula</p>
-      </div>
-
-      <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
-        <h1><b>Lasagna</b> <span class="w3-tag w3-grey w3-round">Popular</span> <span class="w3-right w3-tag w3-dark-grey w3-round">$13.50</span></h1>
-        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Pasta">Add To Cart</button>
-        <p class="w3-text-grey">Special sauce, mozzarella, parmesan, ground beef</p>
-        <hr>
-    
-        <h1><b>Ravioli</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$14.50</span></h1>
-        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Ravioli">Add To Cart</button>
-        <p class="w3-text-grey">Ravioli filled with cheese</p>
+        </form>
         <hr>
         
-        <h1><b>Spaghetti Classica</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$11.00</span></h1>
+        <form method="POST">{% csrf_token %}
+        <h1><b>Pineapple'o'clock</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$16.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
+        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Pineapple'o'clock">Add To Cart</button>
+        <p class="w3-text-grey">Fresh tomatoes, mozzarella, fresh pineapple, bacon, fresh basil</p>
+        </form>
+        <hr>
+        
+        <form method="POST">{% csrf_token %}
+        <h1><b>Meat Town</b> <span class="w3-tag w3-red w3-round">Hot!</span><span class="w3-right w3-tag w3-dark-grey w3-round">$20.00</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
+        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Meat Town">Add To Cart</button>
+        <p class="w3-text-grey">Fresh tomatoes, mozzarella, hot pepporoni, hot sausage, beef, chicken</p>
+        </form>
+        <hr>
+        
+        <form method="POST">{% csrf_token %}
+        <h1><b>Parma</b> <span class="w3-tag w3-grey w3-round">New</span><span class="w3-right w3-tag w3-dark-grey w3-round">$21.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
+        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Parma">Add To Cart</button>
+        <p class="w3-text-grey">Fresh tomatoes, mozzarella, parma, bacon, fresh arugula</p>
+        </form>
+      </div>
+
+      
+      <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
+        <form method="POST">{% csrf_token %}
+        <h1><b>Lasagna</b> <span class="w3-tag w3-grey w3-round">Popular</span> <span class="w3-right w3-tag w3-dark-grey w3-round">$13.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
+        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Pasta">Add To Cart</button>
+        <p class="w3-text-grey">Special sauce, mozzarella, parmesan, ground beef</p>
+        </form>
+        <hr>
+        
+        <form method="POST">{% csrf_token %}
+        <h1><b>Ravioli</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$14.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
+        <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Ravioli">Add To Cart</button>
+        <p class="w3-text-grey">Ravioli filled with cheese</p>
+        </form>
+        <hr>
+        
+        <form method="POST">{% csrf_token %}
+        <h1><b>Spaghetti Classica</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$11.00</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Spaghetti Classica">Add To Cart</button>
         <p class="w3-text-grey">Fresh tomatoes, onions, ground beef</p>
+        </form>
         <hr>
 
-        <h1><b>Seafood pasta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$25.50</span></h1>
+        <form method="POST">{% csrf_token %}
+        <h1><b>Seafood pasta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$25.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Seafood pasta">Add To Cart</button>
         <p class="w3-text-grey">Salmon, shrimp, lobster, garlic</p>
+        </form>
       </div>
 
 
       <div id="Starter" class="w3-container menu w3-padding-32 w3-white">
-        <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="w3-right w3-tag w3-dark-grey w3-round">$5.50</span></h1>
+        <form method="POST">{% csrf_token %}
+        <h1><b>Today's Soup</b> <span class="w3-tag w3-grey w3-round">Seasonal</span><span class="w3-right w3-tag w3-dark-grey w3-round">$5.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Today's Soup">Add To Cart</button>
         <p class="w3-text-grey">Ask the waiter</p>
         <hr>
-    
-        <h1><b>Bruschetta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$8.50</span></h1>
+        </form>
+          
+        <form method="POST">{% csrf_token %}
+        <h1><b>Bruschetta</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$8.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Bruschetta">Add To Cart</button>
         <p class="w3-text-grey">Bread with pesto, tomatoes, onion, garlic</p>
         <hr>
-        
-        <h1><b>Garlic bread</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$9.50</span></h1>
+        </form>
+
+        <form method="POST">{% csrf_token %}
+        <h1><b>Garlic bread</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$9.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Garlic bread">Add To Cart</button>
         <p class="w3-text-grey">Grilled ciabatta, garlic butter, onions</p>
         <hr>
+        </form>
         
-        <h1><b>Tomozzarella</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$10.50</span></h1>
+        <form method="POST">{% csrf_token %}
+        <h1><b>Tomozzarella</b> <span class="w3-right w3-tag w3-dark-grey w3-round">$10.50</span> <span class="w3-right w3-round">QTY:<input type="number" min="1" max="500" value="1" name="quanity"></span></h1>
         <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="item" value="Tomozzarella">Add To Cart</button>
         <p class="w3-text-grey">Tomatoes and mozzarella</p>
+        </form>
       </div><br>
-    </form>
 
     </div>
   </div>

@@ -23,11 +23,11 @@ def logged_home(request):
 def menu(request):
     if request.method == 'POST':
         if request.POST.get('item'):
-            print(request.POST.get('item'))
-            print(request.POST.get('quanity'))
-            pass
-    
-    return render(request, 'customer_app/menu.html')
+            cart[request.POST.get('item')] = request.POST.get('quanity')
+        
+        request.POST = request.POST.copy()
+        context = {'cart': cart}
+    return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
     return render(request, 'customer_app/checkout.html')
