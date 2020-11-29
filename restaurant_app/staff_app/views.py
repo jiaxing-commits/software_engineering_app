@@ -6,9 +6,7 @@ from db_models.models import Current_Orders, Customer, Order_history, Staff
 user = ''
 
 def employee_portal(request):
-    if request.session['Logged_Status'] != 'LOGGED':
-        return redirect('login')
-    else:
+    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] == 'LOGGED':
         if 'User' in request.session:
             user = request.session['User']
         if request.method == 'POST':
@@ -38,3 +36,5 @@ def employee_portal(request):
 
 
         return render(request, 'staff_app/employee_portal.html', context)
+    else:
+        return redirect('login')

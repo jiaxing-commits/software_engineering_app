@@ -8,25 +8,26 @@ import json
 cart = defaultdict()
 
 def default_home(request):
-    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
-        return render(request, 'customer_app/default_home.html')
-    else:
+    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] == 'LOGGED':
         return redirect(logged_home)
+    else:
+        return render(request, 'customer_app/default_home.html')
 
 def logged_home(request):
-    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
-        return redirect('login')
-    else:
+    if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] == 'LOGGED':
         total_price = 0
         total_quanity = 0
         for x, y in cart.items():
             total_price += y[1]
             total_quanity += int(y[0])
-            
+             
         user = request.session['User']
         customer = Customer.objects.get(email=user)
         context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'total_points': customer.total_points}
         return render(request, 'customer_app/logged_home.html', context)
+    else:
+        return redirect('login')
+        
 
 def menu(request):
     if request.method == 'POST':
