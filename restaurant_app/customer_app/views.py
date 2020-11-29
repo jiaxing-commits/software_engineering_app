@@ -24,7 +24,8 @@ def logged_home(request):
             total_quanity += int(y[0])
             
         user = request.session['User']
-        context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user}
+        customer = Customer.objects.get(email=user)
+        context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'total_points': customer.total_points}
         return render(request, 'customer_app/logged_home.html', context)
 
 def menu(request):
@@ -52,10 +53,14 @@ def checkout(request):
                 total_price += y[1]
             item_list =  json.dumps(item_list)
             
-            acc_points = int(total_price)
+            acc_points = int(total_price) * 2
 
             if user and len(cart) != 0:
-                c = Current_Orders(customer_id=Customer.objects.get(email=user).customer_id, item_list = item_list, total_price=total_price)
+                customer = Customer.objects.get(email=user)
+                customer.total_points += acc_points
+                customer.save()
+
+                c = Current_Orders(customer_id=customer.customer_id, item_list = item_list, total_price=total_price)
                 c.save()
                 return redirect(logged_home)
             elif len(cart) != 0:
