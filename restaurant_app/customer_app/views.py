@@ -39,6 +39,7 @@ def menu(request):
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
+    cart = cart
     user = request.session['User'] if 'User' in request.session else None
     total_price = 0
     total_quanity = 0
