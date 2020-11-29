@@ -21,6 +21,12 @@ def logged_home(request):
         return render(request, 'customer_app/logged_home.html')
 
 def menu(request):
+    if request.method == 'POST':
+        if request.POST.get('item'):
+            print(request.POST.get('item'))
+            print(request.POST.get('quanity'))
+            pass
+    
     return render(request, 'customer_app/menu.html')
 
 def checkout(request):
