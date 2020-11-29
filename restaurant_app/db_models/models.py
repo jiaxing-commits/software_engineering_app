@@ -1,5 +1,6 @@
 from django.db import models
-from django.core.validators import MinLengthValidator, RegexValidator
+from django.core.validators import MinLengthValidator, RegexValidator, MinValueValidator
+from decimal import Decimal
 
 
 only_numbers = RegexValidator(
@@ -46,7 +47,7 @@ class Order_history(models.Model):
     staff_id = models.IntegerField()
     # item_list is a string dictionary that has all items ordered, quanity of each item, and price per item
     item_list = models.CharField(max_length=500)
-    total_price = models.PositiveIntegerField(default=0)
+    total_price = models.DecimalField(default=0.0, max_digits=6, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
     order_status = models.CharField(choices=[('Fulfilled','Fulfilled'), ('Deleted','Deleted')], max_length=30)
     #order1 = Order_history(order_id = 1, customer_id = 1, staff_id = 1, item_list = "Ravioli", total_price = 14.50, order_status = "Fulfilled")
     def __str__(self):
@@ -57,7 +58,7 @@ class Current_Orders(models.Model):
     customer_id = models.IntegerField()
     # item_list is a string dictionary that has all items ordered, quanity of each item, and price per item
     item_list = models.CharField(max_length=500)
-    total_price = models.PositiveIntegerField(default=0)
+    total_price = models.DecimalField(default=0.0, max_digits=6, decimal_places=2, validators=[MinValueValidator(Decimal('0.01'))])
 
     #order1 = Current_Orders(order_id = 1, customer_id = 1, item_list = "Ravioli", total_price = 14.50)
 
@@ -68,7 +69,7 @@ class Current_Orders(models.Model):
 class Menu(models.Model):
     item_id = models.AutoField(primary_key=True)
     item_name = models.CharField(max_length=320)
-    price = models.PositiveIntegerField(default=0)
+    price = models.DecimalField(decimal_places=2, max_digits=6, validators=[MinValueValidator(Decimal('0.01'))])
 
     def __str__(self):
         return f'Item: {self.item_name}, Item Id: {str(self.item_id)}'

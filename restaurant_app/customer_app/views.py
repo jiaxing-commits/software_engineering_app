@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from db_models.models import Current_Orders, Customer, Order_history, Staff
+from db_models.models import Current_Orders, Customer, Order_history, Staff, Menu
 from db_models.forms import CustomerForm
 from collections import defaultdict
 
@@ -23,14 +23,17 @@ def logged_home(request):
 def menu(request):
     if request.method == 'POST':
         if request.POST.get('item'):
-            cart[request.POST.get('item')] = request.POST.get('quanity')
-        
+            cart[request.POST.get('item')] = [request.POST.get('quanity'), Menu.objects.get(item_name=request.POST.get('item')).price ]
+            # cart[request.POST.get('item')] = [request.POST.get('quanity'), float(request.POST.get('quanity'))*float(Menu.objects.get(item_name=request.POST.get('item')).price) ]
+            
+
         request.POST = request.POST.copy()
         context = {'cart': cart}
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
-    return render(request, 'customer_app/checkout.html')
+    context = {'cart': cart}
+    return render(request, 'customer_app/checkout.html', context)
 
 def customer_account_creation_form(request):
     if request.method == 'POST':
