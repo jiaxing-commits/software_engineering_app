@@ -11,12 +11,12 @@
 
 <br>
 <br>
-      <div id="main" class="w3-bar-item w3-button">	
-        <button class="openbtn" onclick="openNav()">☰ CART</button>  
-      </div>
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
     <a href=".." class="w3-bar-item w3-button">Best Restaurant App</a>
+      <div id="main" class="w3-bar-item w3-button">	
+        <button class="openbtn" onclick="openNav()">☰ CART</button>  
+      </div>
     <div class="w3-right w3-hide-small">
       <a href="#about" class="w3-bar-item w3-button">About</a>
       <a href="../menu" class="w3-bar-item w3-button">Menu</a>
@@ -39,10 +39,24 @@
 
       <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <table class="center" style="background-color:white">
+          <tr>
+            <th>Item List</th>
+            <th>Total Price</th>
+          </tr>
+
+          <form method="POST">{% csrf_token %}
+            {% for o in total_orders %}
+              <tr>
+                <td> {{o.0.item_list}} </td>
+                <td> {{o.0.total_price}} </td>
+              </tr>
+            {% endfor %}
+          </form>
+        </table>
+        <table class="center" style="background-color:white">
+          <td class="center"><button type="submit" name="checkout" value={{o.0.order_id}}>CHECKOUT</button></td>
+        </table>
       </div>
 
       <script>

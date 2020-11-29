@@ -63,3 +63,9 @@ h1, h2, h3, h4, h5, h6 {
   .sidebar a {font-size: 18px;}
 }
 /* SIDEBAR CSS END */
+
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
