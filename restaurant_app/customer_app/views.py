@@ -17,7 +17,15 @@ def logged_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] != 'LOGGED':
         return redirect('login')
     else:
-        return render(request, 'customer_app/logged_home.html')
+        total_price = 0
+        total_quanity = 0
+        for x, y in cart.items():
+            total_price += y[1]
+            total_quanity += int(y[0])
+            
+        user = request.session['User']
+        context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user}
+        return render(request, 'customer_app/logged_home.html', context)
 
 def menu(request):
     if request.method == 'POST':
