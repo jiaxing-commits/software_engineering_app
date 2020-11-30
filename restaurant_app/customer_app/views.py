@@ -47,6 +47,9 @@ def menu(request):
         if request.POST.get('item'):
             total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
             cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
+        if request.POST.get('delete'):
+            cart.clear()
+            return redirect(menu)
     
     context = {'cart': cart}
     return render(request, 'customer_app/menu.html', context)
