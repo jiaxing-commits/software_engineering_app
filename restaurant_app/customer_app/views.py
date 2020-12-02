@@ -15,7 +15,10 @@ def default_home(request):
             if request.POST.get('item'):
                 total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
                 cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
-    
+
+        if request.POST.get('delete_item'):
+            del cart[request.POST.get('delete_item')]
+            
         context2 = {'cart': cart}
         return render(request, 'customer_app/default_home.html', context2)
 
@@ -34,7 +37,10 @@ def logged_home(request):
             if request.POST.get('item'):
                 total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
                 cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
-    
+
+        if request.POST.get('delete_item'):
+            del cart[request.POST.get('delete_item')]
+
         context2 = {'cart': cart}
 
         return render(request, 'customer_app/logged_home.html', context, context2)
@@ -47,9 +53,8 @@ def menu(request):
         if request.POST.get('item'):
             total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
             cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
-        if request.POST.get('delete'):
-            cart.clear()
-            return redirect(menu)
+        if request.POST.get('delete_item'):
+            del cart[request.POST.get('delete_item')]
     
     context = {'cart': cart}
     return render(request, 'customer_app/menu.html', context)
