@@ -43,7 +43,7 @@
       
               {% for key, value in cart.items %}
                   <p><b>{{ key }}({{ value.0 }})</b> 
-                    <span class="price">{{ value.1 }} <a class="btn" name="item" value={{key}} type="submit" style="color:black">(X)</a></span>
+                    <span class="price">{{ value.1 }} <a class="btn" name="delete_item" value={{key}} type="submit" style="color:black">(X)</a></span>
                   </p>
               {% endfor %}
               {% comment %}  
