@@ -146,6 +146,7 @@ label {
 
 table, th, td{
   border: 1px solid black;
+  width: 235px;
 }
 button.btn2 {
   background-color: #af574c;
