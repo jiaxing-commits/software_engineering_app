@@ -77,7 +77,9 @@ body,h1,h2,h3,h5,h6 {
   padding: 10px;
 }
 
-
+table, th, td{
+  border: 1px solid black;
+}
 
 * {
   box-sizing: border-box;
@@ -89,7 +91,7 @@ body,h1,h2,h3,h5,h6 {
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
   /* margin: 0 -16px; */
-  width: 455px;
+  width: 330px;
 }
 
 .col-25 {

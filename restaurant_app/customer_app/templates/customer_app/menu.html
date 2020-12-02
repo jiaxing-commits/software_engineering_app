@@ -38,12 +38,18 @@
                   <i class="fa fa-shopping-cart"></i>
                 </span>
               </h4>
-      
+              <table>
+          
               {% for key, value in cart.items %}
+                <tr>
+                <td>
                   <p><b>{{ key }}({{ value.0 }})</b> 
                     <span class="price">{{ value.1 }} <button class="btn2" form="form1" name="delete_item" value={{key}} type="submit" style="color:black">×</button></span>
                   </p>
+                </td>
+                </tr>
               {% endfor %}
+              </table>
               {% comment %}  
               {% endcomment %}
               <hr>

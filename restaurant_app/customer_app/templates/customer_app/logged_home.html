@@ -42,6 +42,7 @@
     <div class="row">
       <div class="col-75">
         <div class="container">
+          
           <form method="POST" id="form1">{% csrf_token %}
             <div class="container">
               <h4>Cart
@@ -49,12 +50,18 @@
                   <i class="fa fa-shopping-cart"></i>
                 </span>
               </h4>
-      
+              <table>
+          
               {% for key, value in cart.items %}
+                <tr>
+                <td>
                   <p><b>{{ key }}({{ value.0 }})</b> 
                     <span class="price">{{ value.1 }} <button class="btn2" form="form1" name="delete_item" value={{key}} type="submit" style="color:black">×</button></span>
                   </p>
+                </td>
+                </tr>
               {% endfor %}
+              </table>
               {% comment %}  
               {% endcomment %}
               <hr>
@@ -62,6 +69,7 @@
             </div>
             <a href="../checkout" class="btn">Checkout</a>
           </form> {% comment %} Checkout form end {% endcomment %}
+
       </div>
     </div>
   
@@ -71,7 +79,6 @@
         <h4>Cart
           <span class="price" style="color:black">
             <i class="fa fa-shopping-cart"></i>
-            <b>{{ total_quanity }}</b>
           </span>
         </h4>
 
@@ -88,7 +95,7 @@
   </div>
     <script>
     function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("mySidebar").style.width = "350px";
       // document.getElementById("main").style.marginLeft = "250px";
     }
 
