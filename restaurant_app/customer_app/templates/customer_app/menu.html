@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC"> {% endcomment %}
 <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<link rel="preconnect" href="https://fonts.gstatic.com/%22%3E">
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+
 <body>
 
   <div class="w3-top w3-hide-small">
@@ -16,7 +19,7 @@
       <a href="../checkout" class="w3-bar-item w3-button">CHECKOUT</a>
       {% comment %} <a href="../checkout" class="w3-bar-item w3-button">CART</a> {% endcomment %}
       <div id="main" class="w3-bar-item w3-button">	
-        <a class="openbtn w3-bar-item w3-button" onclick="openNav()">CART</a>  
+        <a class="openbtn" onclick="openNav()">CART</a>  
       </div>
     </div>
   </div>
@@ -27,7 +30,7 @@
     <div class="row">
       <div class="col-75">
         <div class="container">
-          <form action="checkout">
+          <form method="POST">{% csrf_token %}
             {% if user %}
 
             <div class="container">
@@ -40,7 +43,7 @@
       
               {% for key, value in cart.items %}
                   <p><b>{{ key }}({{ value.0 }})</b> 
-                    <span class="price">{{ value.1 }}</span>
+                    <span class="price">{{ value.1 }} <a class="btn" name="item" value={{key}} type="submit" style="color:black">(X)</a></span>
                   </p>
               {% endfor %}
               {% comment %}  
@@ -52,13 +55,14 @@
             {% else %}
 
             {% endif %}
-            <input type="submit" value="Continue to checkout" class="btn">
+    
+            <a href="../checkout" class="btn">Checkout</a>
           </form> {% comment %} Checkout form end {% endcomment %}
-          <form method="POST">{% csrf_token %}
+          <!-- <form method="POST">{% csrf_token %}
             <p>
               <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="delete" value="delete")>Clear Cart</button>
             </p>
-          </form>
+          </form> -->
       </div>
     </div>
   
@@ -68,7 +72,6 @@
         <h4>Cart
           <span class="price" style="color:black">
             <i class="fa fa-shopping-cart"></i>
-            <b>{{ total_quanity }}</b>
           </span>
         </h4>
 
@@ -85,7 +88,7 @@
   </div>
     <script>
     function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("mySidebar").style.width = "350px";
       // document.getElementById("main").style.marginLeft = "250px";
     }
 
