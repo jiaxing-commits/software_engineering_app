@@ -30,14 +30,12 @@
     <div class="row">
       <div class="col-75">
         <div class="container">
+          
           <form method="POST" id="form1">{% csrf_token %}
-            {% if user %}
-
             <div class="container">
               <h4>Cart
                 <span class="price" style="color:black">
                   <i class="fa fa-shopping-cart"></i>
-                  <b>{{ total_quanity }}</b>
                 </span>
               </h4>
       
@@ -51,18 +49,9 @@
               <hr>
               <p>Total <span class="price" style="color:black"><b>${{ total_price }}</b></span></p>
             </div>
-
-            {% else %}
-
-            {% endif %}
-    
             <a href="../checkout" class="btn">Checkout</a>
           </form> {% comment %} Checkout form end {% endcomment %}
-          <!-- <form method="POST">{% csrf_token %}
-            <p>
-              <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="delete" value="delete")>Clear Cart</button>
-            </p>
-          </form> -->
+
       </div>
     </div>
   

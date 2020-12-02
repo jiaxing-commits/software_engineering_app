@@ -88,7 +88,8 @@ body,h1,h2,h3,h5,h6 {
   display: flex;
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
-  margin: 0 -16px;
+  /* margin: 0 -16px; */
+  width: 455px;
 }
 
 .col-25 {

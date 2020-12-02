@@ -42,20 +42,17 @@
     <div class="row">
       <div class="col-75">
         <div class="container">
-          <form action="checkout">
-            {% if user %}
-
+          <form method="POST" id="form1">{% csrf_token %}
             <div class="container">
               <h4>Cart
                 <span class="price" style="color:black">
                   <i class="fa fa-shopping-cart"></i>
-                  <b>{{ total_quanity }}</b>
                 </span>
               </h4>
       
               {% for key, value in cart.items %}
                   <p><b>{{ key }}({{ value.0 }})</b> 
-                    <span class="price">{{ value.1 }}</span>
+                    <span class="price">{{ value.1 }} <button class="btn2" form="form1" name="delete_item" value={{key}} type="submit" style="color:black">×</button></span>
                   </p>
               {% endfor %}
               {% comment %}  
@@ -63,17 +60,8 @@
               <hr>
               <p>Total <span class="price" style="color:black"><b>${{ total_price }}</b></span></p>
             </div>
-
-            {% else %}
-
-            {% endif %}
-            <input type="submit" value="Continue to checkout" class="btn">
+            <a href="../checkout" class="btn">Checkout</a>
           </form> {% comment %} Checkout form end {% endcomment %}
-          <form method="POST">{% csrf_token %}
-            <p>
-              <button class="w3-right w3-tag w3-dark-grey w3-round" type="submit" name="delete" value="delete")>Clear Cart</button>
-            </p>
-          </form>
       </div>
     </div>
   
