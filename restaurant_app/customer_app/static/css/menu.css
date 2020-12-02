@@ -150,6 +150,17 @@ label {
   cursor: pointer;
   font-size: 17px;
 }
+button.btn2 {
+  background-color: #af574c;
+  color: white;
+  padding: 1px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 25px;
+  width: 20px;
+  height: 38px;
+}
 
 .btn:hover {
   background-color: #45a049;
