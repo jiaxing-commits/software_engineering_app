@@ -18,7 +18,7 @@ def default_home(request):
 
         if request.POST.get('delete_item'):
             del cart[request.POST.get('delete_item')]
-            
+
         context2 = {'cart': cart}
         return render(request, 'customer_app/default_home.html', context2)
 
@@ -54,6 +54,7 @@ def menu(request):
             total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
             cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
         if request.POST.get('delete_item'):
+            print("sdfdsfsdf")
             del cart[request.POST.get('delete_item')]
     
     context = {'cart': cart}
