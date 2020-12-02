@@ -11,14 +11,14 @@
 <div class="w3-top">
   <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
     <a href="#home" class="w3-bar-item w3-button">Best Restaurant App</a>
-      <div id="main" class="w3-bar-item w3-button">	
-        <button class="openbtn" onclick="openNav()">☰ CART</button>  
-      </div>
     <div class="w3-right w3-hide-small">
       <a href="#about" class="w3-bar-item w3-button">About</a>
       <a href="menu" class="w3-bar-item w3-button">Menu</a>
       <a href="login" class="w3-bar-item w3-button">Login</a>
       <a href="checkout" class="w3-bar-item w3-button">Checkout</a>
+      <div id="main" class="w3-bar-item w3-button">	
+        <a class="openbtn w3-bar-item w3-button" onclick="openNav()"> CART</a>  
+      </div>
     </div>
   </div>
 </div>
@@ -95,7 +95,7 @@
     <script>
     function openNav() {
       document.getElementById("mySidebar").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
+      // document.getElementById("main").style.marginLeft = "250px";
     }
 
     function closeNav() {
