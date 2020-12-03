@@ -55,8 +55,7 @@ def menu(request):
             total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
             cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
         if request.POST.get('delete_item'):
-            print("sdfdsfsdf")
-            del cart[request.POST.get('delete_item')]
+            del cart[request.POST['delete_item']]
     
     total_price = 0
 
