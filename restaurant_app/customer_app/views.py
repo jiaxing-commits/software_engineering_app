@@ -16,34 +16,35 @@ def default_home(request):
                 total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
                 cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
 
-        if request.POST.get('delete_item'):
-            del cart[request.POST.get('delete_item')]
+            if request.POST.get('delete_item'):
+                del cart[request.POST.get('delete_item')]
+        
+        total_price = 0
 
-        context2 = {'cart': cart}
+        for x, y in cart.items():
+            total_price += y[1]
+
+        context2 = {'cart': cart, 'total_price': total_price}
         return render(request, 'customer_app/default_home.html', context2)
 
 def logged_home(request):
     if 'Logged_Status' in request.session.keys() and request.session['Logged_Status'] == 'LOGGED':
-        total_price = 0
-        total_quanity = 0
-        for x, y in cart.items():
-            total_price += y[1]
-            total_quanity += int(y[0])
-             
-        user = request.session['User']
-        customer = Customer.objects.get(email=user)
-        context = {'cart': cart, 'total_price': total_price, 'total_quanity': total_quanity, 'user': user, 'total_points': customer.total_points}
         if request.method == 'POST':
             if request.POST.get('item'):
                 total_per_item = Decimal(request.POST.get('quanity'))*Decimal(Menu.objects.get(item_name=request.POST.get('item')).price)
                 cart[request.POST.get('item')] = [request.POST.get('quanity'), total_per_item]
 
-        if request.POST.get('delete_item'):
-            del cart[request.POST.get('delete_item')]
+            if request.POST.get('delete_item'):
+                del cart[request.POST.get('delete_item')]
 
-        context2 = {'cart': cart}
+        total_price = 0
 
-        return render(request, 'customer_app/logged_home.html', context, context2)
+        for x, y in cart.items():
+            total_price += y[1]
+
+        context = {'cart': cart, 'total_price': total_price}
+
+        return render(request, 'customer_app/logged_home.html', context)
     else:
         return redirect('login')
         
@@ -57,7 +58,12 @@ def menu(request):
             print("sdfdsfsdf")
             del cart[request.POST.get('delete_item')]
     
-    context = {'cart': cart}
+    total_price = 0
+
+    for x, y in cart.items():
+        total_price += y[1]
+    
+    context = {'cart': cart, 'total_price':total_price}
     return render(request, 'customer_app/menu.html', context)
 
 def checkout(request):
