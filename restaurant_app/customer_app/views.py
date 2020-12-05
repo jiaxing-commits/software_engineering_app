@@ -148,8 +148,9 @@ def order_history(request):
         total_orders = Order_history.objects.all()
         current_user = []
         for i in total_orders: 
-            customer = Customer.objects.get(customer_id = i.customer_id) 
-            current_user.append(customer.customer_id)
+            if i.customer_id != -1:
+                customer = Customer.objects.get(customer_id = i.customer_id) 
+                current_user.append(customer.customer_id)
         total_orders = [[x,y] for (x,y) in zip(total_orders, current_user)]
         context = { 'total_orders': total_orders }
 
