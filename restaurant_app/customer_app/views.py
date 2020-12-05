@@ -36,13 +36,15 @@ def logged_home(request):
 
             if request.POST.get('delete_item'):
                 del cart[request.POST.get('delete_item')]
-
+        user = request.session['User'] if 'User' in request.session else None
+        total_points = 0
+        total_points = Customer.objects.get(email=user).total_points
         total_price = 0
 
         for x, y in cart.items():
             total_price += y[1]
 
-        context = {'cart': cart, 'total_price': total_price}
+        context = {'cart': cart, 'total_price': total_price, 'total_points': total_points}
 
         return render(request, 'customer_app/logged_home.html', context)
     else:
