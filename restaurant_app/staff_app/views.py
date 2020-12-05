@@ -16,8 +16,8 @@ def employee_portal(request):
             if request.POST.get('delete'):
                 id = request.POST.get('delete')
                 which = "Deleted"
-            elif request.POST.get('fulfil'):
-                id = request.POST.get('fulfil')
+            elif request.POST.get('fulfill'):
+                id = request.POST.get('fulfill')
                 which = "Fulfilled"
             current_order = Current_Orders.objects.get(order_id = id)
             piece_of_history = Order_history(order_id = current_order.order_id, customer_id = current_order.customer_id, item_list = current_order.item_list, total_price = current_order.total_price, order_status = which, staff_id = Staff.objects.get(email = user).staff_id)
